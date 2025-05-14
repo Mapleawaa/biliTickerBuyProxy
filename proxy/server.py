@@ -2,7 +2,7 @@ import socket
 import threading
 import signal
 import sys
-from .config import logger, Fore, Style, GRADIO_PORT_RANGE, ALLOWED_NETWORK
+from .config import logger, Fore, Style, GRADIO_PORT_RANGE, ALLOWED_NETWORKS
 from .connection import Connection
 
 class ProxyServer:
@@ -39,7 +39,7 @@ class ProxyServer:
             logger.error(f'{Fore.RED}未找到运行中的Gradio服务{Style.RESET_ALL}')
             return
 
-        logger.info(f'{Fore.CYAN}允许来自 {ALLOWED_NETWORK}0/24 网段的访问{Style.RESET_ALL}')
+        logger.info(f'{Fore.CYAN}允许来自 {ALLOWED_NETWORKS}0/24 网段的访问{Style.RESET_ALL}')
         logger.info(f'{Fore.CYAN}局域网用户可以通过 http://本机IP:端口号 访问对应服务{Style.RESET_ALL}')
         logger.info(f'{Fore.YELLOW}按 CTRL+C 可以安全停止所有服务{Style.RESET_ALL}')
 
@@ -98,8 +98,8 @@ class ProxyServer:
                         connection = Connection(client_socket, client_address, port, self)
                         connection.start()
                     else:
-                        allowed_networks_str = '或'.join(ALLOWED_NETWORKS)
-                        logger.warning(f'{Fore.RED}[端口 {port}] 拒绝来自 {client_address} 的连接 (仅允许 {allowed_networks_str} 网段访问){Style.RESET_ALL}')
+                        ALLOWED_NETWORKSs_str = '或'.join(ALLOWED_NETWORKS)
+                        logger.warning(f'{Fore.RED}[端口 {port}] 拒绝来自 {client_address} 的连接 (仅允许 {ALLOWED_NETWORKSs_str} 网段访问){Style.RESET_ALL}')
                         client_socket.close()
                 except socket.timeout:
                     continue
