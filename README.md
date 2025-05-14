@@ -2,6 +2,8 @@
 
 一个简单的代理工具，用于将本地Gradio服务暴露到局域网中。专门为 [biliTickerBuy](https://github.com/mikumifa/biliTickerBuy) 项目设计，但也适用于其他基于Gradio的Web应用。
 
+> 本项目只能给普通用户在手机上监看使用！黄牛使用4000+！
+
 ## 特性
 
 - 🚀 自动扫描并发现本地Gradio服务（端口范围：7860-7960）
@@ -41,7 +43,7 @@ python portProxy.py
 
 ```json
 {
-    "allowed_networks": ["172.16.1.", "192.168.1."],
+    "allowed_networks": ["192.168.1."],
     "port_range": {
         "start": 7860,
         "end": 7961
@@ -62,14 +64,14 @@ python portProxy.py
 
 ## 注意事项
 
-1. 仅支持局域网内访问，不建议暴露到公网
+1. 仅支持局域网内访问，不建议暴露到公网(HTTP协议并不安全！)
 2. 确保防火墙允许相应端口的访问
 3. 建议在使用完毕后关闭程序（Ctrl+C）
 
 ## 特别鸣谢
 
 - [biliTickerBuy](https://github.com/mikumifa/biliTickerBuy) - B站会员购抢票工具
-- [Trae IDE](https://github.com/TraeAI/trae) - AI辅助编程工具
+- [Trae IDE](https://www.trae.ai/) - AI辅助编程工具
 
 ## 许可证
 
